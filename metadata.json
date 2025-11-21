@@ -1,0 +1,5 @@
+{
+  "name": "FlashGenius",
+  "description": "A gamified AI study companion that converts your lecture slides and notes into interactive flashcard battles.",
+  "requestFramePermissions": []
+}

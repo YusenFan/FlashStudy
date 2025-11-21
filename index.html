@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FlashGenius - AI Study Game</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Nunito', 'sans-serif'],
+            },
+            colors: {
+              'duo-green': '#58cc02',
+              'duo-green-dark': '#46a302',
+              'duo-blue': '#1cb0f6',
+              'duo-blue-dark': '#1899d6',
+              'duo-red': '#ff4b4b',
+              'duo-red-dark': '#ea2b2b',
+              'duo-yellow': '#ffc800',
+              'duo-yellow-dark': '#e5a500',
+              'duo-gray': '#e5e5e5',
+              'duo-gray-dark': '#cecece',
+              'duo-text': '#4b4b4b',
+            },
+            animation: {
+              'bounce-short': 'bounce 0.5s infinite',
+              'pop': 'pop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards',
+              'jump-clap': 'jump 0.6s ease-in-out infinite, clap 0.6s ease-in-out infinite',
+              'sad-shake': 'sad 0.8s ease-in-out forwards',
+              'slide-up': 'slideUp 0.4s ease-out forwards',
+            },
+            keyframes: {
+              pop: {
+                '0%': { transform: 'scale(0.8)', opacity: '0' },
+                '100%': { transform: 'scale(1)', opacity: '1' },
+              },
+              jump: {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-20px)' },
+              },
+              clap: {
+                 '0%, 100%': { filter: 'brightness(1)' },
+                 '50%': { filter: 'brightness(1.1) drop-shadow(0 0 10px #fbbf24)' },
+              },
+              sad: {
+                '0%, 100%': { transform: 'rotate(0deg) translateY(0)' },
+                '25%': { transform: 'rotate(-10deg) translateY(5px)' },
+                '75%': { transform: 'rotate(10deg) translateY(5px)' },
+              },
+              slideUp: {
+                '0%': { transform: 'translateY(100%)' },
+                '100%': { transform: 'translateY(0)' },
+              }
+            }
+          },
+        },
+      };
+    </script>
+    <style>
+      body {
+        font-family: 'Nunito', sans-serif;
+        background-color: #ffffff;
+        color: #4b4b4b;
+      }
+      .perspective-1000 {
+        perspective: 1000px;
+      }
+      .transform-style-3d {
+        transform-style: preserve-3d;
+      }
+      .backface-hidden {
+        backface-visibility: hidden;
+      }
+      .rotate-y-180 {
+        transform: rotateY(180deg);
+      }
+      
+      /* Duolingo-style Button Logic */
+      .btn-3d {
+        transition: all 0.1s;
+        transform: translateY(0);
+      }
+      .btn-3d:active {
+        transform: translateY(4px);
+        border-bottom-width: 0px;
+        margin-top: 4px; /* Compensate layout shift */
+        margin-bottom: -4px;
+      }
+      /* For disabled state, we don't want the click effect usually, but style handles it */
+      
+      /* Custom scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #e5e5e5;
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #d4d4d4;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
